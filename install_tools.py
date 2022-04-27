@@ -46,6 +46,15 @@ def install_dotnet_core_runtime():
   print('Adding {} to PATH'.format(dotnet_core_dir))
   os.environ['PATH'] = dotnet_core_dir+os.pathsep+os.environ.get('PATH', '')
 
+  # Also see if $HOME/.dotnet/tools exists & add it
+  dotnet_tools = os.path.abspath( os.path.join(os.environ.get('HOME', ''), '.dotnet', 'tools') )
+  if os.path.exists(dotnet_tools):
+    print('Adding {} to PATH'.format(dotnet_tools))
+    os.environ['PATH'] = dotnet_tools+os.pathsep+os.environ.get('PATH', '')
+
+  print('Setting DOTNET_ROOT={}'.format(dotnet_core_dir))
+  os.environ['DOTNET_ROOT'] = dotnet_core_dir
+
 
 
 
