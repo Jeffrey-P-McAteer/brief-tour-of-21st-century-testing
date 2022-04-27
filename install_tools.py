@@ -56,6 +56,13 @@ def install_dotnet_core_runtime():
   os.environ['DOTNET_ROOT'] = dotnet_core_dir
 
 
+def ensure_pytest_cov_installed():
+  try:
+    import coverage
+    return # it exists, we're good!
+  except:
+    traceback.print_exc()
+    subprocess.run([sys.executable, '-m', 'pip', 'install', '--user', 'pytest-cov'], check=True)
 
 
 
@@ -68,6 +75,7 @@ def main(args=sys.argv):
     os.chdir(script_dir)
 
   install_dotnet_core_runtime()
+  ensure_pytest_cov_installed()
 
   if 'spawn-shell' in args or 'interact' in args or 'interactive' in args or 'i' in args:
     print('Spawning bash shell with development environment setup...')

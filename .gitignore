@@ -8,5 +8,9 @@ coverage-hits/
 coverage.json
 TestResults/
 
+htmlcov/
+.coverage
+.pytest_cache/
+
 
 
