@@ -51,11 +51,18 @@ def install_dotnet_core_runtime():
 
 
 def main(args=sys.argv):
+  orig_cwd = os.getcwd()
+  script_dir = os.path.dirname(os.path.abspath(__file__))
+  if not script_dir == os.getcwd():
+    print('WARNING: install_tools.py is not being run from repository root.')
+    print('Changing directory to {}'.format(script_dir))
+    os.chdir(script_dir)
+
   install_dotnet_core_runtime()
 
-  if 'spawn-shell' in args:
+  if 'spawn-shell' in args or 'interact' in args or 'interactive' in args or 'i' in args:
     print('Spawning bash shell with development environment setup...')
-    subprocess.run(['bash'])
+    subprocess.run(['bash'], cwd=orig_cwd)
 
 
 

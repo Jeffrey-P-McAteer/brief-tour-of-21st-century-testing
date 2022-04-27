@@ -12,6 +12,7 @@ will:
     - Generate report
  - Open all reports in your default web browser
 
+Caveat: `install_tools.py` only downloads x86_64 linux versions of tools. TODO: os detection & swap URLs for windows x86_64 systems.
 
 ```bash
 python run_all.py

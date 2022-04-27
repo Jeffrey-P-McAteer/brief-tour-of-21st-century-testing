@@ -1,5 +1,12 @@
 __pycache__/
 tools/
+obj/
+bin/
+coverage/
+coverage-html/
+coverage-hits/
+coverage.json
+TestResults/
 
 
 
