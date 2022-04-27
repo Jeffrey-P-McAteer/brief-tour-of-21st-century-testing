@@ -53,9 +53,10 @@ def install_dotnet_core_runtime():
 def main(args=sys.argv):
   install_dotnet_core_runtime()
 
-  print('Spawning shell...')
-  subprocess.run(['bash'])
-  
+  if 'spawn-shell' in args:
+    print('Spawning bash shell with development environment setup...')
+    subprocess.run(['bash'])
+
 
 
 if __name__ == '__main__':
